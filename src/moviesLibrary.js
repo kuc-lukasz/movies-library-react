@@ -1,8 +1,13 @@
 import React from "react";
 import SingleFilm from "./SingleFilm";
+import "./Styles/MoviesLibrary.css";
 
 const MoviesLibrary = () => {
-  return <SingleFilm />;
+  return (
+    <div className="movieslibrary">
+      <SingleFilm />
+    </div>
+  );
 };
 
 export default MoviesLibrary;

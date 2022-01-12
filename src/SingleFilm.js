@@ -7,7 +7,7 @@ import { MoviesList } from "./Movies-Data/moviesData";
 const SingleFilm = () => {
   const filmsList = MoviesList();
   return (
-    <div>
+    <>
       {filmsList.map((film) => (
         <div className="singleFilm">
           <h3>
@@ -20,7 +20,7 @@ const SingleFilm = () => {
           <DescriptionFields label="Plot" value={film.Plot} />
         </div>
       ))}
-    </div>
+    </>
   );
 };
 
