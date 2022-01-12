@@ -1,9 +1,7 @@
+import "../Styles/Poster.css";
+
 const Poster = ({ posterSrc }) => {
-  return (
-    <div>
-      <img alt="poster" src={posterSrc}></img>
-    </div>
-  );
+  return <img alt="poster" src={posterSrc}></img>;
 };
 
 export default Poster;

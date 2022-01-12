@@ -2,6 +2,7 @@ import React from "react";
 import DescriptionFields from "./Components/DescriptionFields";
 import Poster from "./Components/Poster";
 import { MoviesList } from "./Movies-Data/moviesData";
+import "./Styles/moviesLibrary.css";
 
 const MoviesLibrary = () => {
   const filmsList = MoviesList();
@@ -10,7 +11,7 @@ const MoviesLibrary = () => {
   return (
     <div>
       {filmsList.map((film) => (
-        <div>
+        <div className="singleFilm">
           <h3>
             {film.Title} {film.Year}
           </h3>
