@@ -1,4 +1,5 @@
 import React from "react";
+import DescriptionFields from "./Components/DescriptionFields";
 import { MoviesList } from "./Movies-Data/moviesData";
 
 const MoviesLibrary = () => {
@@ -7,7 +8,12 @@ const MoviesLibrary = () => {
 
   return (
     <div>
-      <p>działa</p>
+      {filmsList.map((film) => (
+        <div>
+          <h3>{film.Title}</h3>
+          <DescriptionFields label="Genre" value={film.Genre} />
+        </div>
+      ))}
     </div>
   );
 };
