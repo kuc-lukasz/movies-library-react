@@ -1,5 +1,4 @@
 import React from "react";
-import Filter from "./Components/filter";
 import SingleFilm from "./SingleFilm";
 import "./Styles/MoviesLibrary.css";
 

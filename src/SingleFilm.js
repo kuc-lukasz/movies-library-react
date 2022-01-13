@@ -10,23 +10,31 @@ const SingleFilm = () => {
   const filmsList = MoviesList();
 
   const [filter, setFilter] = useState("");
-
-  const handleOnChange = (e) => {
-    console.log(e.target.value);
-    setFilter(e.target.value);
-  };
+  const [ascending, setAscending] = useState("");
 
   const filteredList = filmsList.filter((e) => {
     const filmsTitle = e.Title;
     return filmsTitle.toLowerCase().includes(filter.toLowerCase());
   });
 
+  const handleOnChange = (e) => {
+    console.log(e.target.value);
+    setFilter(e.target.value);
+  };
+
+  const handleClick = () => {
+    setAscending(!ascending);
+  };
+
   return (
     <>
       <div>
+        <button onClick={handleClick}>
+          {ascending ? "Sort Ascending" : "Sort Descending"}
+        </button>
         <form>
           <label>
-            Wyszukaj
+            Find
             <input
               name="search"
               value={filter}
@@ -37,18 +45,22 @@ const SingleFilm = () => {
         </form>
       </div>
       <div className="moviesList">
-        {filteredList.map((film) => (
-          <div className="singleFilm">
-            <h3>
-              {film.Title} {film.Year}
-            </h3>
-            <Poster posterSrc={film.Poster} />
-            <DescriptionFields label="Genre" value={film.Genre} />
-            <DescriptionFields label="Awards" value={film.Awards} />
-            <DescriptionFields label="Director" value={film.Director} />
-            <DescriptionFields label="Plot" value={film.Plot} />
-          </div>
-        ))}
+        {filteredList
+          .sort((film, nextFilm) =>
+            ascending ? nextFilm.Year - film.Year : film.Year - nextFilm.Year
+          )
+          .map((film) => (
+            <div className="singleFilm">
+              <h3>
+                {film.Title} {film.Year}
+              </h3>
+              <Poster posterSrc={film.Poster} />
+              <DescriptionFields label="Genre" value={film.Genre} />
+              <DescriptionFields label="Awards" value={film.Awards} />
+              <DescriptionFields label="Director" value={film.Director} />
+              <DescriptionFields label="Plot" value={film.Plot} />
+            </div>
+          ))}
       </div>
     </>
   );
