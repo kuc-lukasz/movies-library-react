@@ -28,21 +28,19 @@ const SingleFilm = () => {
 
   return (
     <>
-      <div>
-        <button onClick={handleClick}>
-          {ascending ? "Sort Ascending" : "Sort Descending"}
-        </button>
+      <div className="nav-container">
         <form>
-          <label>
-            Find
-            <input
-              name="search"
-              value={filter}
-              onChange={handleOnChange}
-              placeholder="Movie title ..."
-            ></input>
-          </label>
+          <label>Find a movie!</label>
+          <input
+            name="search"
+            value={filter}
+            onChange={handleOnChange}
+            placeholder="Write title ..."
+          ></input>
         </form>
+        <button onClick={handleClick}>
+          {ascending ? "Sort The Oldest" : "Sort The Newest"}
+        </button>
       </div>
       <div className="moviesList">
         {filteredList
