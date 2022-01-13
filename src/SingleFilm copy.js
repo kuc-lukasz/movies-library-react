@@ -47,25 +47,37 @@ const SingleFilm = () => {
           <button onClick={handleClick}>
             {ascending ? "Sort The Oldest" : "Sort The Newest"}
           </button>
-          {/* <button onClick={handleOnChangeAlph}>
+          <button onClick={handleOnChangeAlph}>
             {alphabetically ? "Sorting A -> " : "Sorting Z -> "}
-          </button> */}
+          </button>
         </div>
       </div>
       <div className="moviesList">
         {filteredAscending
-          .sort((film, nextFilm) =>
-            ascending ? nextFilm.Year - film.Year : film.Year - nextFilm.Year
-          )
-          // .sort((film, nextFilm) =>
-          //   alphabetically
-          //     ? nextFilm.Title > film.Title
+          //   .sort((film, nextFilm) =>
+          //     ascending ? nextFilm.Year - film.Year : film.Year - nextFilm.Year
+          //   )
+          //   .sort((film, nextFilm) =>
+          //     alphabetically
+          //       ? nextFilm.Title > film.Title
+          //         ? 1
+          //         : -1
+          //       : film.Title > nextFilm.Title
           //       ? 1
           //       : -1
-          //     : film.Title > nextFilm.Title
-          //     ? 1
-          //     : -1
           // )
+          .sort((film, nextFilm) =>
+            (ascending ? nextFilm.Year - film.Year : film.Year)(
+              alphabetically
+                ? nextFilm.Title > film.Title
+                  ? 1
+                  : -1
+                : film.Title > nextFilm.Title
+                ? 1
+                : -1
+            )
+          )
+
           .map((film) => (
             <div className="singleFilm">
               <h3>
